@@ -1,0 +1,42 @@
+<h1>🔒 Panel Administración</h1>
+
+
+
+<div *ngIf="ventanaGuardarEditar==true">
+  <br><br><br>
+  <h2>Guardar Nuevo</h2>
+  <form (ngSubmit)="guardarMonedas()" [formGroup]="formGroupGuardar">
+    <label>Denominación:</label><br>
+    <input type="number" formControlName="form_denominacion">
+    <br>
+    <label>Cantidad:</label><br>
+    <input type="number"  disabled><br><br>
+    <input type="submit" value="Guardar">
+    <button (click)="cerrarVentanaGuardarEditar()">Cancelar</button>
+  </form>
+  <br><br><br>
+</div>
+
+
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Denominación</th>
+            <th scope="col">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let moneda of listEntityMonedas">
+            <th scope="row">$ {{moneda.denominacion}}</th>
+            <td>{{moneda.cantidad}}</td>
+            <td>
+                <a><button> Editar</button></a>
+                <a><button> Eliminar</button></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <button (click)="activarVentanaGuardar()">Añadir Nuevo</button>
+</div>

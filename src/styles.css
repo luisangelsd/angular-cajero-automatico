@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/*CSS GLOBAL*/
+
+body{
+    margin: 0;
+    padding: 1% 5%;
+    background-color: #fff;
+}
+
+
+.btn-usuario{
+    padding: 8px 15px;
+    margin: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: rgb(253, 97, 97);
+    background-color:  rgb(253, 97, 97);
+    color: #fff;
+}
+
+.btn-administrador{
+    padding: 8px 15px;
+    margin: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: rgb(253, 97, 97);
+    color: rgb(253, 97, 97);
+    background-color: #fff;
+}
