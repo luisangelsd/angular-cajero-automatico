@@ -1,42 +1,51 @@
 <h1>🔒 Panel Administración</h1>
+<br><br><br>
+<div id="vistas">
+  <div id="vista-monedas">
+    <h2>💰 Monedas</h2>
+    <div *ngIf="ventanaGuardarEditarMoneda==true">
+      <br><br><br>
+      <h2>Guardar Moneda</h2>
+      <form [formGroup]="formGroupGuardar">
+        <label>Denominación:</label><br>
+        <input type="number" formControlName="form_denominacion" [(ngModel)]="entityMonedas.denominacion">
+        <br>
+        <label>Cantidad:{{entityMonedas.cantidad}} </label><br><br>
+        <input type="button" (click)="editarMoneda()" value="Editar" *ngIf="activarBtnEditar==true">
+        <input type="button" (click)="guardarMonedas()" value="Guardar" *ngIf="activarBtnGuardar==true">
+        <button (click)="cerrarVentanaGuardarEditarMoneda()">Cancelar</button>
+      </form>
+      <br><br><br>
+    </div>
+    
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Denominación</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let moneda of listEntityMonedas">
+                <th scope="row">$ {{moneda.denominacion}}</th>
+                <td>{{moneda.cantidad}}</td>
+                <td>
+                    <a><button type="button" class="btn btn-info" (click)="buscar(moneda)"> Editar</button></a>
+                    <a><button type="button" class="btn btn-danger" (click)="eliminar(moneda)" > Eliminar</button></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <button type="button" class="btn btn-success" (click)="activarVentanaGuardarMoneda()">Añadir Nuevo</button>
+    </div>
+  
+  </div>
+  
+  <div id="vista-billetes">
+    <h2> 💵 Billetes</h2>
+  
+  </div>
 
-
-
-<div *ngIf="ventanaGuardarEditar==true">
-  <br><br><br>
-  <h2>Guardar Nuevo</h2>
-  <form (ngSubmit)="guardarMonedas()" [formGroup]="formGroupGuardar">
-    <label>Denominación:</label><br>
-    <input type="number" formControlName="form_denominacion">
-    <br>
-    <label>Cantidad:</label><br>
-    <input type="number"  disabled><br><br>
-    <input type="submit" value="Guardar">
-    <button (click)="cerrarVentanaGuardarEditar()">Cancelar</button>
-  </form>
-  <br><br><br>
 </div>
 
-
-
-<div>
-    <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Denominación</th>
-            <th scope="col">Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let moneda of listEntityMonedas">
-            <th scope="row">$ {{moneda.denominacion}}</th>
-            <td>{{moneda.cantidad}}</td>
-            <td>
-                <a><button> Editar</button></a>
-                <a><button> Eliminar</button></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <button (click)="activarVentanaGuardar()">Añadir Nuevo</button>
-</div>

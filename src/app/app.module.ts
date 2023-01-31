@@ -9,6 +9,7 @@ import { AdministradorModule } from './administrador/administrador.module';
 
 
 const rutas: Routes=[
+  {path:'',component:VistaPanelAdministradorComponent},
   {path:'vista-panel-administrador', component:VistaPanelAdministradorComponent},
   {path:'vista-panel-usuario', component: VistaPanelUsuarioComponent}
 ]

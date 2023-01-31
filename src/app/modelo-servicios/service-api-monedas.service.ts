@@ -11,38 +11,6 @@ export class ServiceApiMonedasService {
 
   private urlEndPoint: String ="http://localhost:8090/monedas/";
 
-  //-- Listar monedas
-  public listarMonedas():Observable<EntityMonedas[]>{
-    return this.http.get(this.urlEndPoint+"list").pipe(
-      map(respuesta => respuesta as EntityMonedas[]),
-      catchError(e=>{
-        return throwError(e);
-      })
-    );
-  }
-  /*
-
-  //-- Buscar 
-  public buscarPorDenominacion(denominacion: Number):Observable<EntityMonedas>{
-    return this.http.get(this.urlEndPoint+"show/"+denominacion).pipe(
-      map(respuesta => respuesta as EntityMonedas),
-      catchError (e => {
-        return throwError(e);
-      })
-    )
-  }
-
-  //-- Eliminar
-  public eliminarPorDenominacion(denominacion: Number): Observable<EntityMonedas>{
-    return this.http.delete(this.urlEndPoint+"delete/"+denominacion).pipe(
-      map(respuesta => respuesta as EntityMonedas),
-      catchError(e=>{
-        return throwError(e);
-      })
-    )
-  }
-
-
   //-- Guardar
   public guardar (entityMonedas: EntityMonedas):Observable<EntityMonedas>{
     return this.http.post(this.urlEndPoint+"save", entityMonedas).pipe(
@@ -53,8 +21,47 @@ export class ServiceApiMonedasService {
     )
   }
 
-  //-- Editar
-  */
+  //-- Editar: update/5/nueva-denominacion/10
+  public editar(dActual:any, dNuevo:any):Observable<EntityMonedas>{
+    return this.http.put(this.urlEndPoint+"update/"+dActual+"/nueva-denominacion/"+dNuevo,null).pipe(
+      map(respuesta => respuesta as EntityMonedas),
+      catchError(e=>{
+        return throwError(e);
+      })
+    );
+  }
+
+    //-- Eliminar
+    public eliminarPorDenominacion(denominacion: any): Observable<EntityMonedas>{
+      return this.http.delete(this.urlEndPoint+"delete/"+denominacion).pipe(
+        map(respuesta => respuesta as EntityMonedas),
+        catchError(e=>{
+          return throwError(e);
+        })
+      )
+    }
+
+
+  //-- Listar monedas
+  public listarMonedas():Observable<EntityMonedas[]>{
+    return this.http.get(this.urlEndPoint+"list").pipe(
+      map(respuesta => respuesta as EntityMonedas[]),
+      catchError(e=>{
+        return throwError(e);
+      })
+    );
+  }
+
+    //-- Buscar 
+    public buscarPorDenominacion(denominacion: any):Observable<EntityMonedas>{
+      return this.http.get(this.urlEndPoint+"show/"+denominacion).pipe(
+        map(respuesta => respuesta as EntityMonedas),
+        catchError (e => {
+          return throwError(e);
+        })
+      )
+    }
+  
 
   constructor(
     private http: HttpClient
