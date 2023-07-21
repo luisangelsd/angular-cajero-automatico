@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { DtoSaldoRetirar } from '../modelo-dtos/dto-saldo-retirar';
+import { DtoListarBilletesMonedas } from '../modelo-dtos/dto-listar-billetes-monedas';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,16 @@ export class ServiceApiService {
       map (respuesta => respuesta as DtoSaldoRetirar),
       catchError(e=>{
         
+        return throwError(e);
+      })
+    )
+  }
+
+  //-- Listar Billetes/Monedas (Denominaciónes, Cantidad)
+  public listarBilletesMonedas (): Observable<DtoListarBilletesMonedas>{
+    return this.http.get(this.urlEndPoint+"listar-saldo").pipe(
+      map(response => response as DtoListarBilletesMonedas),
+      catchError(e=>{
         return throwError(e);
       })
     )

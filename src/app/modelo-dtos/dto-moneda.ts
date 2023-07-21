@@ -1,5 +1,5 @@
 export class DtoMoneda {
 
-    public denominacion: number | undefined;
-    public cantidad: number | undefined;
+    public mo_denominacion: number = 0;
+    public mo_cantidad: number = 0;
 }

@@ -1,0 +1,41 @@
+.tablas-container{
+    background-color: white;
+    display: grid;
+    padding: 2% 25%; 
+}
+
+
+
+.tablas-container_tabla{
+    padding: 20px;
+}
+
+
+.container-cantidad-retirar{
+    background-color: white;
+    display: grid;
+    padding: 2% 25%;
+    
+}
+
+.container-cantidad-retirar__form{
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 10px;
+}
+
+
+/* ============================================================ Vista: smartphone ============================================================ */
+
+
+ @media screen and (max-width: 700px) { 
+
+    .tablas-container{    
+        padding: 2% 10%;
+    }
+
+    .container-cantidad-retirar{    
+        padding: 2% 10%;
+    }
+
+  }

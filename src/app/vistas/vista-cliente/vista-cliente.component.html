@@ -1,1 +1,39 @@
-<p>vista-cliente works!</p>
+<div class="tablas-container">
+
+
+    <div class="tablas-container_tabla">
+        <h2>Retirar Dinero:</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Billete $20</th>
+                    <th scope="col">Billete $50</th>
+                    <th scope="col">Billete $100</th>
+                    <th scope="col">Billete $100</th>
+                    <th scope="col">Moneda $5</th>
+                    <th scope="col">Moneda $10</th>
+                    <th scope="col">Moneda $20</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{dtoSaldoRetirar.billete20}}</td>
+                    <td>{{dtoSaldoRetirar.billete50}}</td>
+                    <td>{{dtoSaldoRetirar.billete100}}</td>
+                    <td>{{dtoSaldoRetirar.billete200}}</td>
+                    <td>{{dtoSaldoRetirar.moneda5}}</td>
+                    <td>{{dtoSaldoRetirar.moneda10}}</td>
+                    <td>{{dtoSaldoRetirar.moneda20}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>
+
+<div class="container-cantidad-retirar">
+    <form class="container-cantidad-retirar__form">
+        <label>Canitdad a Retirar:</label>
+        <input type="number" placeholder="$0.000">
+        <input type="button" class="btn btn-warning" (click)="retirarDinero()" value="Contirnuar">
+    </form>   
+</div>

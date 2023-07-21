@@ -1,10 +1,10 @@
 export class DtoSaldoRetirar {
 
-    public billete20: number | undefined;
-    public billete50: number | undefined;
-    public billete100: number | undefined;
-    public billete200: number | undefined;
-    public moneda5: number | undefined;
-    public moneda10: number | undefined;
-    public moneda20: number | undefined;
+    public billete20: number = 0;
+    public billete50: number = 0;
+    public billete100: number = 0;
+    public billete200: number = 0;
+    public moneda5: number = 0;
+    public moneda10: number = 0;
+    public moneda20: number = 0;
 }

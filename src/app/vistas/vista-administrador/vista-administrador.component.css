@@ -1,0 +1,25 @@
+.tablas-container{
+    background-color: white;
+    display: grid;
+    padding: 5% 25%;
+    
+}
+
+.tablas-container_tabla{
+    padding: 20px;
+}
+
+
+/* ============================================================ Vista: smartphone ============================================================ */
+
+
+ @media screen and (max-width: 700px) { 
+
+    .tablas-container{
+        
+        padding: 5% 10%;
+        
+    }
+
+  }
+
