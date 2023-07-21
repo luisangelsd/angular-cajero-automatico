@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityMonedas } from '../../modelo-entitys/entity-monedas';
+import { EntityMonedas } from '../../modelo-dtos/dto-moneda';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ServiceApiMonedasService } from '../../modelo-servicios/service-api-monedas.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
+import { ServiceApiService } from '../../modelo-servicios/service-api.service';
+import { DtoSaldoRetirar } from 'src/app/modelo-dtos/dto-saldo-retirar';
 
 @Component({
   selector: 'app-vista-panel-administrador',
@@ -16,7 +19,8 @@ export class VistaPanelAdministradorComponent implements OnInit{
 
 /*======== Inyección de servicios ========*/
 constructor(
-  public servicioMonedas: ServiceApiMonedasService
+  public servicioMonedas: ServiceApiMonedasService,
+  public serviceApiService:ServiceApiService
 ){}
 
 
@@ -26,13 +30,13 @@ public listEntityMonedas: EntityMonedas[] | undefined;
 public ventanaGuardarEditarMoneda: Boolean=false;
 public activarBtnGuardar=true;
 public activarBtnEditar=false;
-
+public dtoSaldoRetirar : DtoSaldoRetirar = new DtoSaldoRetirar();
 
 
 /*======== Validar Formulario ========*/
 public formGroupGuardar=new FormGroup({
-  form_denominacion:new FormControl("",[Validators.required])
-
+  form_denominacion:new FormControl("",[Validators.required]),
+  form_nuevaDenominacion: new FormControl("",[])
 });
 
 
@@ -52,6 +56,7 @@ public limpiarFormGuardarEditarMonedas():void{
 
 //-- Activar ventana guardar
 public activarVentanaGuardarMoneda():void{
+  this.formGroupGuardar.get('form_denominacion')?.enable();
   this.ventanaGuardarEditarMoneda=true;
   this.activarBtnGuardar=true;
   this.activarBtnEditar=false;
@@ -59,6 +64,7 @@ public activarVentanaGuardarMoneda():void{
 
 //-- Activar ventana editar
 public activarVentanaEditarMoneda():void{
+  this.formGroupGuardar.get('form_denominacion')?.disable();
   this.ventanaGuardarEditarMoneda=true;
   this.activarBtnEditar=true;
   this.activarBtnGuardar=false;
@@ -71,7 +77,7 @@ public cerrarVentanaGuardarEditarMoneda():void{
   this.limpiarFormGuardarEditarMonedas();
 }
 
-
+/*
 
 //-- Buscar: Activa ventana
 public buscar(entityMonedas: EntityMonedas){
@@ -108,13 +114,13 @@ public guardarMonedas():void{
       this.servicioMonedas.guardar(this.entityMonedas).subscribe(
         HttpResponse => {
           this.listarMonedas();
+          this.cerrarVentanaGuardarEditarMoneda();
         },
         HttpErrorResponse=>{
           switch(HttpErrorResponse.status){
             default:
               alert("Ocurrio un error: "+HttpErrorResponse.error.error);
             break;
-  
           }
   
   
@@ -130,20 +136,27 @@ public guardarMonedas():void{
 
 //-- Editar
 public editarMoneda():void{
-  /*
-  this.servicioMonedas.editar(5,10).subscribe(
-    HttpResponse=>{
-      this.cerrarVentanaGuardarEditarMoneda();
-      this.listarMonedas();
-    },
-    HttpErrorResponse=>{
-      switch(HttpErrorResponse.status){
-        default:
-            alert("Error: "+HttpErrorResponse.error.error);
-          break;
+  
+
+  if( this.formGroupGuardar.get('form_nuevaDenominacion')?.value!=null){
+
+    this.servicioMonedas.editar(this.entityMonedas.denominacion, this.formGroupGuardar.get('form_nuevaDenominacion')?.value).subscribe(
+      HttpResponse=>{
+        this.listarMonedas();
+      },
+      HttpErrorResponse=>{
+        switch(HttpErrorResponse.status){
+          default:
+              alert(HttpErrorResponse.error.error);
+            break;
+        }
       }
-    }
-  )*/
+    )
+    
+  }else{
+    alert("Rellena todos los campots");
+  }
+
 }
 
 
@@ -184,12 +197,30 @@ public listarMonedas():void{
     }
   )
 }
+*/
 
 
+  //-- Retir Saldo
+  public retirarSaldo(saldo:number):void{
+    this.serviceApiService.retirarSaldo(saldo).subscribe(
+      HttpResponse => {
+        this.dtoSaldoRetirar = HttpResponse;
+      },
+      HttpErrorResponse =>{
+        switch(HttpErrorResponse.status){
+          default:
+              alert("Error: " + HttpErrorResponse.error.error);
+            break;
+        }
 
+      }
+    )
+  }
 
   ngOnInit(): void {
-   this.listarMonedas();
+ //  this.listarMonedas();
+   console.error(this.retirarSaldo(200));
+   console.error(this.dtoSaldoRetirar);
   }
 
 }

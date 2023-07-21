@@ -1,16 +1,29 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, throwError } from 'rxjs';
-import { EntityMonedas } from '../modelo-dtos/dto-moneda';
+import { Injectable } from '@angular/core';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { DtoSaldoRetirar } from '../modelo-dtos/dto-saldo-retirar';
 
 @Injectable({
   providedIn: 'root'
 })
+export class ServiceApiService {
 
-export class ServiceApiMonedasService {
+  private urlEndPoint: String ="http://localhost:8080/";
 
-  private urlEndPoint: String ="http://localhost:8090/monedas/";
 
+  
+  //-- Retirar Saldo
+  public retirarSaldo(cantidad : number): Observable<DtoSaldoRetirar>{
+    return this.http.get(this.urlEndPoint+ "retirar-saldo/"+cantidad).pipe(
+      map (respuesta => respuesta as DtoSaldoRetirar),
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+  }
+
+  
+  /*
   //-- Guardar
   public guardar (entityMonedas: EntityMonedas):Observable<EntityMonedas>{
     return this.http.post(this.urlEndPoint+"save", entityMonedas).pipe(
@@ -62,7 +75,7 @@ export class ServiceApiMonedasService {
       )
     }
   
-
+*/
   constructor(
     private http: HttpClient
   ) { }

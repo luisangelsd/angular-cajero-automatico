@@ -8,11 +8,16 @@
       <h2>Guardar Moneda</h2>
       <form [formGroup]="formGroupGuardar">
         <label>Denominación:</label><br>
-        <input type="number" formControlName="form_denominacion" [(ngModel)]="entityMonedas.denominacion">
-        <br>
+        <input type="number" formControlName="form_denominacion" [(ngModel)]="entityMonedas.denominacion"><br>
+       
+        <div  *ngIf="activarBtnEditar==true">
+          <label>Nueva Denominación</label><br>
+          <input type="number" formControlName="form_nuevaDenominacion"><br>
+        </div>
+  
         <label>Cantidad:{{entityMonedas.cantidad}} </label><br><br>
-        <input type="button" (click)="editarMoneda()" value="Editar" *ngIf="activarBtnEditar==true">
-        <input type="button" (click)="guardarMonedas()" value="Guardar" *ngIf="activarBtnGuardar==true">
+       <!-- <input type="button" (click)="editarMoneda()" value="Editar" *ngIf="activarBtnEditar==true">
+        <input type="button" (click)="guardarMonedas()" value="Guardar" *ngIf="activarBtnGuardar==true">-->
         <button (click)="cerrarVentanaGuardarEditarMoneda()">Cancelar</button>
       </form>
       <br><br><br>
@@ -31,8 +36,8 @@
                 <th scope="row">$ {{moneda.denominacion}}</th>
                 <td>{{moneda.cantidad}}</td>
                 <td>
-                    <a><button type="button" class="btn btn-info" (click)="buscar(moneda)"> Editar</button></a>
-                    <a><button type="button" class="btn btn-danger" (click)="eliminar(moneda)" > Eliminar</button></a>
+                  <!--  <a><button type="button" class="btn btn-info" (click)="buscar(moneda)"> Editar</button></a>
+                    <a><button type="button" class="btn btn-danger" (click)="eliminar(moneda)" > Eliminar</button></a> -->
                 </td>
               </tr>
             </tbody>
