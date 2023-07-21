@@ -1,0 +1,30 @@
+<h1>💰 Monedas/ Billetes Disponibles</h1><br><br><br>
+
+
+<div id="vistas">
+
+    <div>
+        <caption>Monedas</caption>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Denominación</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let moneda of listDtoMonedas">
+                <th scope="row">$ {{moneda.denominacion}}</th>
+                <td>{{moneda.cantidad}}</td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+  
+  </div>
+  
+
+
+
+

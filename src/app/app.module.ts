@@ -2,29 +2,29 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import { VistaPanelAdministradorComponent } from './administrador/vista-panel-administrador/vista-panel-administrador.component';
-import { VistaPanelUsuarioComponent } from './usuario/vista-panel-usuario/vista-panel-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdministradorModule } from './administrador/administrador.module';
+import { VistaAdministradorComponent } from './vistas/vista-administrador/vista-administrador.component';
+import { VistaClienteComponent } from './vistas/vista-cliente/vista-cliente.component';
 
 
 const rutas: Routes=[
-  {path:'',component:VistaPanelAdministradorComponent},
-  {path:'vista-panel-administrador', component:VistaPanelAdministradorComponent},
-  {path:'vista-panel-usuario', component: VistaPanelUsuarioComponent}
+  {path:'',component:VistaClienteComponent},
+  {path:'administrador', component:VistaAdministradorComponent},
+  {path:'cliente', component: VistaClienteComponent}
 ]
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VistaAdministradorComponent,
+    VistaClienteComponent
     
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(rutas),
-    HttpClientModule,
-    AdministradorModule
+    HttpClientModule
     
   ],
   exports:[

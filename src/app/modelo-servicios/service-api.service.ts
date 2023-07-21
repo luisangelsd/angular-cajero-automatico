@@ -17,6 +17,7 @@ export class ServiceApiService {
     return this.http.get(this.urlEndPoint+ "retirar-saldo/"+cantidad).pipe(
       map (respuesta => respuesta as DtoSaldoRetirar),
       catchError(e=>{
+        
         return throwError(e);
       })
     )
