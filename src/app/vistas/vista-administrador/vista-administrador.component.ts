@@ -5,6 +5,8 @@ import { DtoMoneda } from 'src/app/modelo-dtos/dto-moneda';
 import { DtoSaldoRetirar } from 'src/app/modelo-dtos/dto-saldo-retirar';
 import { ServiceApiService } from 'src/app/modelo-servicios/service-api.service';
 import { DtoListarBilletesMonedas } from '../../modelo-dtos/dto-listar-billetes-monedas';
+import { HttpErrorResponseService } from 'src/app/modelo-servicios/http-error-response.service';
+import swal from 'sweetalert2';	
 
 @Component({
   selector: 'app-vista-administrador',
@@ -16,7 +18,8 @@ export class VistaAdministradorComponent implements OnInit {
 
   /*======== Inyección de servicios ========*/
 constructor(
-  public serviceApi:ServiceApiService
+  public serviceApi:ServiceApiService,
+  public serviceHttpErrors: HttpErrorResponseService
 ){}
 
 
@@ -47,40 +50,18 @@ public totalSaldo: number =0;
         this.listDtoBilletes = this.dtoListarBilletesMonedas.billetes;
         this.listDtoMonedas = this.dtoListarBilletesMonedas.monedas;
         this.totalSaldo= this.dtoListarBilletesMonedas.total;
+        swal.fire("¡Saldo Actualizado!", "", "success");
       },
       HttpErrorResponse =>{
-        switch(HttpErrorResponse.status){
-          default:
-              alert("Error: " + HttpErrorResponse);
-            break;
-        }
+          this.serviceHttpErrors.manejoDeErrores(HttpErrorResponse);
       }
     )
   }
 
 
-
-  //-- Retir Saldo
-  public retirarSaldo(saldo:number):void{
-    this.serviceApi.retirarSaldo(saldo).subscribe(
-      HttpResponse => {
-        this.dtoSaldoRetirar = HttpResponse;
-      },
-      HttpErrorResponse =>{
-        switch(HttpErrorResponse.status){
-          default:
-              alert("Error: " + HttpErrorResponse);
-            break;
-        }
-
-      }
-    )
-  }
 
   ngOnInit(): void {
-   
    this.listarSaldo();
-  
   }
 
 

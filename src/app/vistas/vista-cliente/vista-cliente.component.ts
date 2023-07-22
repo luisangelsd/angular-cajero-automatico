@@ -62,6 +62,8 @@ public activarDescativarVistaRetirarDinero (){
         HttpResponse =>{
           this.dtoSaldoRetirar = HttpResponse;
           this.activarDescativarVistaRetirarDinero();
+          this.formGroupRetirarSaldo.reset();
+          swal.fire("¡Has Retirado $"+cantidad+"!", "", "success");
         },
         HttpErrorResponse =>{
           this.serviceHttpErrors.manejoDeErrores(HttpErrorResponse);
@@ -79,6 +81,7 @@ public activarDescativarVistaRetirarDinero (){
     this.serviceApi.actualizarMonedasBilletes(this.dtoSaldoRetirarActualizar).subscribe(
       HttpResponse =>{
         swal.fire("¡Saldo Añadido Correctamente!", "", "success");
+        this.dtoSaldoRetirarActualizar=new DtoSaldoRetirar();
       },
       HttpErrorResponse =>{
         this.serviceHttpErrors.manejoDeErrores(HttpErrorResponse);
