@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { VistaAdministradorComponent } from './vistas/vista-administrador/vista-administrador.component';
 import { VistaClienteComponent } from './vistas/vista-cliente/vista-cliente.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 const rutas: Routes=[
@@ -24,7 +26,9 @@ const rutas: Routes=[
   imports: [
     BrowserModule,
     RouterModule.forRoot(rutas),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    SweetAlert2Module
     
   ],
   exports:[

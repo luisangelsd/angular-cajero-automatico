@@ -1,65 +1,66 @@
-<div class="tablas-container">
-    <h1>💰 Monedas/ Billetes Disponibles</h1><br><br>
-    <div>
+<div class="container-administrador">
 
-        <div class="tablas-container_tabla">
-            <h2>Monedas</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Denominación</th>
-                        <th scope="col">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let moneda of listDtoMonedas">
-                        <th scope="row">$ {{moneda.mo_denominacion}}</th>
-                        <td>{{moneda.mo_cantidad}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-        <div class="tablas-container_tabla">
-            <h2>Billetes</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Denominación</th>
-                        <th scope="col">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let billete of listDtoBilletes">
-                        <th scope="row">$ {{billete.bi_denominacion}}</th>
-                        <td>{{billete.bi_cantidad}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-
-
-        <div class="contenedor-tabla">
-            <h2>Resumen:</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Total:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">$ {{totalSaldo}}</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <button type="button" class="btn btn-warning" (click)="listarSaldo()">Refrescar</button>
+    <div class="container-administrador__imagen">
 
     </div>
+
+    <div class="container-administrador__tabla">
+        <h2>💰 Monedas</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Denominación</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let moneda of listDtoMonedas">
+                    <th scope="row">$ {{moneda.mo_denominacion}}</th>
+                    <td>{{moneda.mo_cantidad}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container-administrador__tabla">
+        <h2>Billetes</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Denominación</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let billete of listDtoBilletes">
+                    <th scope="row">$ {{billete.bi_denominacion}}</th>
+                    <td>{{billete.bi_cantidad}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="container-administrador__tabla">
+        <h2>Resumen:</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Total:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">$ {{totalSaldo}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" class="btn btn-warning" (click)="listarSaldo()">Refrescar</button>
+
+
 
 </div>

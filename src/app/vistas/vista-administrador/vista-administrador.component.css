@@ -1,11 +1,20 @@
-.tablas-container{
+.container-administrador{
     background-color: white;
     display: grid;
-    padding: 5% 25%;
-    
+    padding: 2% 25%; 
 }
 
-.tablas-container_tabla{
+.container-administrador__imagen{
+    background-image: url(/../assets/img/imagen-mujer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;  
+    border-radius: 5px;
+    height: 250px;
+    margin: 20px 0px;
+}
+
+.container-administrador__tabla{
     padding: 20px;
 }
 
@@ -15,10 +24,8 @@
 
  @media screen and (max-width: 700px) { 
 
-    .tablas-container{
-        
-        padding: 5% 10%;
-        
+    .container-administrador{  
+        padding: 5% 10%;     
     }
 
   }

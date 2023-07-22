@@ -1,15 +1,16 @@
-<div class="tablas-container">
+<div class="container-cliente">
 
 
-    <div class="tablas-container_tabla">
-        <h2>Retirar Dinero:</h2>
-        <table class="table">
+
+    <div class="container-cliente__item">
+        <h2>💳 Retirar Dinero:</h2><br>
+        <table class="table" *ngIf="activarVistaRetirarDinero==true">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Billete $20</th>
                     <th scope="col">Billete $50</th>
                     <th scope="col">Billete $100</th>
-                    <th scope="col">Billete $100</th>
+                    <th scope="col">Billete $200</th>
                     <th scope="col">Moneda $5</th>
                     <th scope="col">Moneda $10</th>
                     <th scope="col">Moneda $20</th>
@@ -27,13 +28,23 @@
                 </tr>
             </tbody>
         </table>
-    </div>    
+        <form class="form" (ngSubmit)="retirarDinero()" [formGroup]="formGroupRetirarSaldo">
+            <label>Canitdad a Retirar:</label><br>
+            <input type="number" placeholder="$0.000" formControlName="form_cantidad">
+            <input type="submit" class="btn btn-warning"  value="Continuar">
+            <button type="button" class="btn btn-danger" (click)="activarDescativarVistaRetirarDinero()" *ngIf="activarVistaRetirarDinero==true">Salir</button>
+        </form> 
+    </div>  
+    
+    
+    <div class="container-cliente__item">    
+    </div>
+
+
+
+
 </div>
 
-<div class="container-cantidad-retirar">
-    <form class="container-cantidad-retirar__form">
-        <label>Canitdad a Retirar:</label>
-        <input type="number" placeholder="$0.000">
-        <input type="button" class="btn btn-warning" (click)="retirarDinero()" value="Contirnuar">
-    </form>   
-</div>
+
+
+

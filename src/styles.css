@@ -1,12 +1,5 @@
 /*CSS GLOBAL*/
 
-body{
-    margin: 0;
-    padding: 1% 5%;
-    background-color: #fff;
-}
-
-
 .btn-usuario{
     padding: 8px 15px;
     margin: 5px;
@@ -26,3 +19,4 @@ body{
     color: rgb(253, 97, 97);
     background-color: #fff;
 }
+

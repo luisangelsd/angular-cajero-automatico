@@ -14,7 +14,7 @@ export class ServiceApiService {
 
   
   //-- Retirar Saldo
-  public retirarSaldo(cantidad : number): Observable<DtoSaldoRetirar>{
+  public retirarSaldo(cantidad : any): Observable<DtoSaldoRetirar>{
     return this.http.get(this.urlEndPoint+ "retirar-saldo/"+cantidad).pipe(
       map (respuesta => respuesta as DtoSaldoRetirar),
       catchError(e=>{
