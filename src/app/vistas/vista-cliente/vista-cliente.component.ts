@@ -3,6 +3,8 @@ import { ServiceApiService } from 'src/app/modelo-servicios/service-api.service'
 import { DtoSaldoRetirar } from '../../modelo-dtos/dto-saldo-retirar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponseService } from '../../modelo-servicios/http-error-response.service';
+import swal from 'sweetalert2';	
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-vista-cliente',
@@ -21,11 +23,17 @@ constructor(
 
 /*======== Variables Globales ========*/
 public dtoSaldoRetirar:DtoSaldoRetirar = new DtoSaldoRetirar();
+public dtoSaldoRetirarActualizar:DtoSaldoRetirar = new DtoSaldoRetirar();
+
 public activarVistaRetirarDinero: boolean =false;
 
 
 public formGroupRetirarSaldo = new FormGroup({
   form_cantidad: new FormControl("",[Validators.required])
+});
+
+public formGroupActualizar = new FormGroup({
+  
 });
 
 
@@ -61,12 +69,23 @@ public activarDescativarVistaRetirarDinero (){
       )
 
     }else{
-      alert("Formulario no valid");
+      swal.fire("¡Añade una Cantidad!", "", "error");
     }
-
-    
   }
 
+  //-- Actualizar
+  public actualizarMonedasBilletes(){
+    console.warn(this.dtoSaldoRetirarActualizar);
+    this.serviceApi.actualizarMonedasBilletes(this.dtoSaldoRetirarActualizar).subscribe(
+      HttpResponse =>{
+        swal.fire("¡Saldo Añadido Correctamente!", "", "success");
+      },
+      HttpErrorResponse =>{
+        this.serviceHttpErrors.manejoDeErrores(HttpErrorResponse);
+      }
+    );
+    
+  }
 
 
   ngOnInit(): void {

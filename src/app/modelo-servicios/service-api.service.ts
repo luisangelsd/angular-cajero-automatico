@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { DtoSaldoRetirar } from '../modelo-dtos/dto-saldo-retirar';
 import { DtoListarBilletesMonedas } from '../modelo-dtos/dto-listar-billetes-monedas';
 
@@ -34,6 +34,16 @@ export class ServiceApiService {
     )
   }
 
+
+  //-- Editar Monedas Billetes
+   public actualizarMonedasBilletes (dtoSaldoRetirar: DtoSaldoRetirar):Observable<String>{
+    return this.http.put(this.urlEndPoint+"update/monedas-billetes", dtoSaldoRetirar).pipe(
+      map(respuesta => respuesta as String),
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+  }
   
   /*
   //-- Guardar
@@ -46,15 +56,7 @@ export class ServiceApiService {
     )
   }
 
-  //-- Editar: update/5/nueva-denominacion/10
-  public editar(dActual:any, dNuevo:any):Observable<EntityMonedas>{
-    return this.http.put(this.urlEndPoint+"update/"+dActual+"/nueva-denominacion/"+dNuevo,null).pipe(
-      map(respuesta => respuesta as EntityMonedas),
-      catchError(e=>{
-        return throwError(e);
-      })
-    );
-  }
+  
 
     //-- Eliminar
     public eliminarPorDenominacion(denominacion: any): Observable<EntityMonedas>{

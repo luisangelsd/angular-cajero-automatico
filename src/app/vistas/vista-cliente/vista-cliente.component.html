@@ -2,7 +2,7 @@
 
 
 
-    <div class="container-cliente__item">
+    <div class="container-cliente__retirar-dinero">
         <h2>💳 Retirar Dinero:</h2><br>
         <table class="table" *ngIf="activarVistaRetirarDinero==true">
             <thead class="thead-dark">
@@ -31,13 +31,38 @@
         <form class="form" (ngSubmit)="retirarDinero()" [formGroup]="formGroupRetirarSaldo">
             <label>Canitdad a Retirar:</label><br>
             <input type="number" placeholder="$0.000" formControlName="form_cantidad">
-            <input type="submit" class="btn btn-warning"  value="Continuar">
+            <input type="submit" class="btn btn-warning"  value="Retirar Saldo">
             <button type="button" class="btn btn-danger" (click)="activarDescativarVistaRetirarDinero()" *ngIf="activarVistaRetirarDinero==true">Salir</button>
         </form> 
     </div>  
     
     
-    <div class="container-cliente__item">    
+    <div class="container-cliente__agregar-dinero">
+
+        <div class="container-cliente__agregar-dinero__form">
+            <h2>💳 Añadir Dinero:</h2><br>
+            <form (ngSubmit)="actualizarMonedasBilletes()">
+                <label>Billete: $20 &nbsp; &nbsp;&nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.billete20" name="billete20" value="0"><br>
+                <label>Billete: $50 &nbsp; &nbsp;&nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.billete50" name="billete50" value="0"><br>
+                <label>Billete: $100 &nbsp;&nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.billete100" name="billete100" value="0"><br>
+                <label>Billete: $200 &nbsp;&nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.billete200" name="billete200" value="0"><br>
+                <label>Moneda: $5 &nbsp; &nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.moneda5"  name="moneda5" value="0"><br>
+                <label>Moneda: $10 &nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.moneda10" name="moneda10" value="0"><br>
+                <label>Moneda: $20 &nbsp;</label>
+                <input type="number" [(ngModel)]="dtoSaldoRetirarActualizar.moneda20" name="moneda20" value="0"><br><br>
+                <input  type="submit" class="btn btn-warning"  value="Añadir Saldo">
+            </form>    
+        </div>
+        <div class="container-cliente__agregar-dinero__img" >
+            
+        </div>
+        
     </div>
 
 
