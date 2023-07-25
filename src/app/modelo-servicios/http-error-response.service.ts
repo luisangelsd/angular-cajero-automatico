@@ -15,11 +15,20 @@ export class HttpErrorResponseService {
 
   public manejoDeErrores(httpErrorResponse: HttpErrorResponse):void{
     switch (httpErrorResponse.status) {
-      default:
-        swal.fire(httpErrorResponse.error.errors.mensaje,
+      case 0:
+        swal.fire("Ups!!, Ocurrio un error al conectarse con el Servidor",
         "Status: "+ httpErrorResponse.status,
-        "error"); 
+        "error");
         break;
+
+      default:
+        try {
+          swal.fire(httpErrorResponse.error.errors.mensaje, "Status: "+ httpErrorResponse.status,"error"); 
+        } catch (error) {
+          swal.fire("Ups!!, Ocurrio un error", "Status: "+ httpErrorResponse.status,"error"); 
+        }
+      break;
+        
     }
   }
 
