@@ -7,6 +7,7 @@ import { VistaAdministradorComponent } from './vistas/vista-administrador/vista-
 import { VistaClienteComponent } from './vistas/vista-cliente/vista-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { VistaMenuComponent } from './vistas/vista-menu/vista-menu.component';
 
 
 const rutas: Routes=[
@@ -20,7 +21,8 @@ const rutas: Routes=[
   declarations: [
     AppComponent,
     VistaAdministradorComponent,
-    VistaClienteComponent
+    VistaClienteComponent,
+    VistaMenuComponent
     
   ],
   imports: [

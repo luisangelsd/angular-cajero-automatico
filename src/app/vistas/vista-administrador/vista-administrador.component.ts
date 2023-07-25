@@ -50,7 +50,7 @@ public totalSaldo: number =0;
         this.listDtoBilletes = this.dtoListarBilletesMonedas.billetes;
         this.listDtoMonedas = this.dtoListarBilletesMonedas.monedas;
         this.totalSaldo= this.dtoListarBilletesMonedas.total;
-        swal.fire("¡Saldo Actualizado!", "", "success");
+        //swal.fire("¡Saldo Actualizado!", "", "success");
       },
       HttpErrorResponse =>{
           this.serviceHttpErrors.manejoDeErrores(HttpErrorResponse);
