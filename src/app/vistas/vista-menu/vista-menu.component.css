@@ -23,7 +23,9 @@ a {
 
 
 #menu_logo {
+    display: flex;
     text-align: left;
+    gap: 10px;
 }
 
 #menu_enlaces {
@@ -43,11 +45,13 @@ a {
 
 
 #link-destacado {
-    background-color: #cf85fa00;
+    background-color: #fb6f92;
     border-style: solid;
+    
     border-width: 1px;
     padding: 10px 15px;
     border-radius: 4px;
+    border-color: #fe4473;
 }
 
 
