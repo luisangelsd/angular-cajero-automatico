@@ -1,27 +1,14 @@
-# AngularCajeroAutomatico
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+# Documentacion:
+Este proyecto es el complemento FrontEnd de la siguiente API: https://github.com/sandovalguichoo/spring-cajero-automatico. El cual es una interfaz grafica para poder poder retirar, añadir, y listar dinero. 
 
-## Development server
+Igualmente el presente es una prueba técnica para desarrollador de APIS para Grupo Salinas. En el siguiente link podrás encontrar más detalladamente los requerimientos de mismo: https://sandovalguicho.com/portfolio/cajero-automatico-prueba-tecnica-grupo-salinas/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
++ **Nota 1:** El proyecto ya viene configurado, solamente tienes que descargar y ejecutarlo
++ **Nota 2:** Es necesario que previamente hayas descargado el proyecto donde se construye la API y que se encuentre en ejecución
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Algunas Características Importantes: :
++ Consumo de API
++ Componentes
++ Servicios
++ Entre otros
