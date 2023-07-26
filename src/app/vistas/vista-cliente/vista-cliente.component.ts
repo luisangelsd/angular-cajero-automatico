@@ -29,7 +29,7 @@ public activarVistaRetirarDinero: boolean =false;
 
 
 public formGroupRetirarSaldo = new FormGroup({
-  form_cantidad: new FormControl("",[Validators.required])
+  form_cantidad: new FormControl("Error en Form Cantidad",[Validators.required])
 });
 
 public formGroupActualizar = new FormGroup({
@@ -55,7 +55,7 @@ public activarDescativarVistaRetirarDinero (){
   public retirarDinero():void{
 
     //-- Validar formulario
-    if(this.formGroupRetirarSaldo.valid){
+    if(this.formGroupRetirarSaldo.valid ){
        let cantidad = this.formGroupRetirarSaldo.get("form_cantidad")?.value;
 
       this.serviceApi.retirarSaldo(cantidad).subscribe(
@@ -71,7 +71,7 @@ public activarDescativarVistaRetirarDinero (){
       )
 
     }else{
-      swal.fire("¡Añade una Cantidad!", "", "error");
+      swal.fire("¡Añade una cantidad valida!", "1) La cantidad no puede esta vacia, 2) La cantidad no puede superar 8 digitos", "error");
     }
   }
 
